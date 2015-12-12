@@ -1,9 +1,26 @@
 import os, time, logging
 import pandas as pd
+import json
 from django.conf import settings
 
-
 logger = logging.getLogger(__name__)
+
+
+def valid_token(token):
+    """
+    Check if the given token is valid.
+    """
+    if token in dataStore.api_tokens.keys():
+        return True
+    return False
+
+
+def using_tokens():
+    """
+    :return: True only if API tokens have been successfully loaded, false otherwise.
+    """
+    return getattr(dataStore, 'api_tokens', None) is not None and dataStore.api_tokens
+
 
 
 class HDF5DataStore(object):
@@ -81,7 +98,8 @@ class PickleDataStore(object):
     """
 
     def __init__(self):
-        logger.info('Reading base data CSVs...')
+        logger.info('Reading base data JSON and CSVs...')
+        self.readJSONs()
         self.readCSVs()
 
     def registerTableBuilder(self, builder):
@@ -97,6 +115,33 @@ class PickleDataStore(object):
         self.births_day_country = pd.read_csv(settings.CSV_BIRTHS_DAY_COUNTRY)
         self.countries = pd.unique(self.data.Location).tolist()
         logger.info('Parsed CSVs in %.02f seconds', (time.clock()-start))
+
+    def readJSONs(self):
+        start = time.clock()
+        self.api_tokens = {}
+        try:
+            json_data = open(settings.JSON_API_TOKENS_PATH).read()
+            api_keys = json.loads(json_data)
+            for token in api_keys["api_keys"]:
+                if not token.has_key("key"):
+                    logger.warn("No token key found for '%s'" % token)
+                    continue
+
+                if token.has_key("limit_hourly"):
+                    self.api_tokens[token["key"]] = str(token["limit_hourly"]) + '/h'
+                else:
+                    self.api_tokens[token["key"]] = None
+                    logger.warn("No hourly limit set for token: '%s'" % token["key"])
+        except Exception, e:
+            logger.exception('Reading JSON API tokens file failed! %s', e)
+            self.api_tokens = {}
+
+        if not self.api_tokens:
+            logger.warn('No tokens have been loaded, API token authentication is disabled!')
+        else:
+            logger.info('Loaded %d tokens.' % len(self.api_tokens))
+
+        logger.info('Parsed JSONs in %.02f seconds', (time.clock()-start))
 
     def __getitem__(self, item):
         sex, country = item

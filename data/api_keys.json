@@ -1,0 +1,18 @@
+{
+  "api_keys": [
+    {
+      "key": "sf8sf9g-91e2-11e5-8994-feff819cdc9f",
+      "limit_hourly": 1500,
+      "name": "Han Solo",
+      "email": "han@population.io",
+      "app_url": "http://http://population.io/"
+    },
+    {
+      "key": "f0518f00-91e2-11e5-8994-feff819cdc9f",
+      "limit_hourly": 3,
+      "name": "Peter Pan",
+      "email": "peter@population.io",
+      "app_url": "http://population.io/"
+    }
+  ]
+}

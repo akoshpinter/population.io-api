@@ -91,15 +91,21 @@ class AlgorithmTests(SimpleTestCase):
         self.assertEqual(totalPopulation('United Kingdom', date(2013, 1, 1)), 62961264)
         self.assertEqual(totalPopulation('Afghanistan', date(2022, 12, 31)), 37599673)
         self.assertEqual(totalPopulation('World', date(2018, 7, 31)), 7569167368)
-        
+
     def test_mortality_distribution(self):
-        self.assertEqual(calculateMortalityDistribution('Germany', 'male', relativedelta(years=43, months=3))[3][1],2.2179399450663992)            
+        self.assertEqual(calculateMortalityDistribution('Germany', 'male', relativedelta(years=43, months=3))[3][1],2.2179399450663992)
 
 
 class ApiIntegrationTests(APISimpleTestCase):
     """
     A set of test cases testing the whole stack, from the url routing to the request processing to delivering the right status code. Do not check any returned data.
     """
+
+    def setUp(self):
+        super(ApiIntegrationTests, self).setUp()
+        # set a valid authorization header
+        self.client.credentials(HTTP_AUTHORIZATION = 'Token ' + 'sf8sf9g-91e2-11e5-8994-feff819cdc9f')
+
 
     def _testEndpoint(self, path, expectErrorContaining=None):
         response = self.client.get('/1.0' + path)

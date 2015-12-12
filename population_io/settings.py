@@ -110,8 +110,21 @@ STATICFILES_DIRS = (
 # REST Framework configuration
 # http://www.django-rest-framework.org/api-guide/settings
 
+# Setting up the API token authentication is done here via 1 Authentication and 2 Throttling classes:
+# 'CustomTokenAuthentication' class is used if only requests with valid token should be allowed.
+# 'TokenThrottle' is the main class for limiting the API usage per token as defined in the JSON file.
+# 'PublicAccessThrottle' is optional class for limiting API usage in case public access is still allowed.
+# Default throttling rate must be specified if 'PublicAccessThrottle' is used.
+
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('api.authentication.CustomTokenAuthentication',),
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+    'DEFAULT_THROTTLE_CLASSES': (
+        'api.throttling.TokenThrottle', 'api.throttling.PublicAccessThrottle'
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '1/min',
+    },
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
@@ -137,5 +150,6 @@ CSV_TOTAL_POPULATION_PATH = os.path.join(BASE_DIR, 'data', 'Total_population_for
 CSV_SURVIVAL_RATIO_PATH = os.path.join(BASE_DIR, 'data', 'Survival_ratio_Cohort_ages.csv')
 CSV_CONTINENT_COUNTRIES = os.path.join(BASE_DIR, 'data', 'continent_countries.csv')
 CSV_BIRTHS_DAY_COUNTRY = os.path.join(BASE_DIR, 'data', 'worldBirthsByDayAndCountry.csv')
+JSON_API_TOKENS_PATH = os.path.join(BASE_DIR, 'data', 'api_keys.json')
 
 CACHE_CONTROL_MAXAGE = 24 * 60 * 60
