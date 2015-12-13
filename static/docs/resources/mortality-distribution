@@ -15,6 +15,13 @@
                     "type": "",
                     "parameters": [
                         {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
+                        {
                             "name": "country",
                             "paramType": "path",
                             "description": "the country to retrieve the distribution for",
@@ -44,6 +51,16 @@
                         {
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
                             "responseModel": "ErrorMessage"
                         }
                     ]

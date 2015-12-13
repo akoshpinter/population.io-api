@@ -15,6 +15,13 @@
                     "type": "RemainingLifeExpectancy",
                     "parameters": [
                         {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
+                        {
                             "name": "sex",
                             "paramType": "path",
                             "description": "the person's sex",
@@ -53,6 +60,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -68,6 +85,13 @@
                     "nickname": "calculateTotalLifeExpectancy",
                     "type": "TotalLifeExpectancy",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "sex",
                             "paramType": "path",
@@ -97,6 +121,16 @@
                         {
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
                             "responseModel": "ErrorMessage"
                         }
                     ]

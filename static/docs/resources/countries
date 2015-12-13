@@ -13,10 +13,29 @@
                     "notes": "Return a list of all countries in the statistical dataset. These are also the valid input values to the various 'country' parameters across the remaining API.",
                     "nickname": "listCountries",
                     "type": "CountryList",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        }
+                    ],
                     "responseMessages": [
                         {
                             "code": 200,
                             "message": "success"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -34,6 +53,17 @@
                     "items": {"type": "string"},
                     "description": "list of countries as strings",
                     "defaultValue": "[\"World\", \"Europe\"]"
+                }
+            }
+        },
+        "ErrorMessage": {
+            "id": "ErrorMessage",
+            "description": "an error message",
+            "required": ["detail"],
+            "properties": {
+                "detail": {
+                    "type": "string",
+                    "description": "the reason why the request could not be successfully processed"
                 }
             }
         }

@@ -15,6 +15,13 @@
                     "type": "PopulationTables",
                     "parameters": [
                         {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
+                        {
                             "name": "year",
                             "paramType": "path",
                             "description": "the year to retrieve the population table for",
@@ -44,6 +51,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -59,6 +76,13 @@
                     "nickname": "retrievePopulationTableAllAges",
                     "type": "PopulationTables",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "year",
                             "paramType": "path",
@@ -81,6 +105,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -96,6 +130,13 @@
                     "nickname": "retrievePopulationTableAllYears",
                     "type": "PopulationTables",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "country",
                             "paramType": "path",
@@ -118,6 +159,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -133,6 +184,13 @@
                     "nickname": "determineTotalPopulationByDate",
                     "type": "TotalPopulations",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "country",
                             "paramType": "path",
@@ -155,6 +213,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -171,6 +239,13 @@
                     "type": "TotalPopulations",
                     "parameters": [
                         {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
+                        {
                             "name": "country",
                             "paramType": "path",
                             "description": "the country to determine the total population for",
@@ -183,6 +258,16 @@
                         {
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
                             "responseModel": "ErrorMessage"
                         }
                     ]

@@ -15,6 +15,13 @@
                     "type": "WorldPopulationRankToday",
                     "parameters": [
                         {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
+                        {
                             "name": "dob",
                             "paramType": "path",
                             "description": "the person's date of birth",
@@ -44,6 +51,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -59,6 +76,13 @@
                     "nickname": "worldPopulationRankByDate",
                     "type": "WorldPopulationRankByDate",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "dob",
                             "paramType": "path",
@@ -97,6 +121,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -112,6 +146,13 @@
                     "nickname": "worldPopulationRankByAge",
                     "type": "WorldPopulationRankByAge",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "dob",
                             "paramType": "path",
@@ -150,6 +191,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -165,6 +216,13 @@
                     "nickname": "worldPopulationRankInPast",
                     "type": "WorldPopulationRankWithOffset",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "dob",
                             "paramType": "path",
@@ -203,6 +261,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -218,6 +286,13 @@
                     "nickname": "worldPopulationRankInFuture",
                     "type": "WorldPopulationRankWithOffset",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "dob",
                             "paramType": "path",
@@ -256,6 +331,16 @@
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
                             "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
+                            "responseModel": "ErrorMessage"
                         }
                     ]
                 }
@@ -271,6 +356,13 @@
                     "nickname": "dateByWorldPopulationRank",
                     "type": "DateByWorldPopulationRank",
                     "parameters": [
+                        {
+                            "type": "string",
+                            "paramType": "header",
+                            "name": "Authorization",
+                            "description": "An authorization token in the format 'Token xxxxxxxxxxxxxx'.",
+                            "required": false
+                        },
                         {
                             "name": "dob",
                             "paramType": "path",
@@ -308,6 +400,16 @@
                         {
                             "code": 400,
                             "message": "invalid request argument, or request argument out of boundaries",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 401,
+                            "message": "authentication failed",
+                            "responseModel": "ErrorMessage"
+                        },
+                        {
+                            "code": 429,
+                            "message": "too many requests",
                             "responseModel": "ErrorMessage"
                         }
                     ]
